@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reports - PharmaAnalytics</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                <i class="fas fa-pills"></i>
+                <h1>PharmaAnalytics</h1>
+            </div>
+            <nav>
+                <a href="/"><i class="fas fa-chart-bar"></i> Dashboard</a>
+                <a href="/reports" class="active"><i class="fas fa-file-alt"></i> Reports</a>
+                <a href="/settings"><i class="fas fa-cog"></i> Settings</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="hero">
+            <h2>Advanced Reports & Analytics</h2>
+            <p>Detailed insights and comprehensive reporting for your pharmaceutical sales data</p>
+        </div>
+
+        <div class="reports-grid">
+            <div class="report-card">
+                <div class="report-header">
+                    <h3><i class="fas fa-chart-line"></i> Sales Performance Report</h3>
+                    <button class="export-btn"><i class="fas fa-download"></i> Export PDF</button>
+                </div>
+                <div class="report-content">
+                    <div class="metric-grid">
+                        <div class="metric">
+                            <span class="metric-value" id="totalRevenue">$0</span>
+                            <span class="metric-label">Total Revenue</span>
+                        </div>
+                        <div class="metric">
+                            <span class="metric-value" id="avgMonthly">$0</span>
+                            <span class="metric-label">Avg Monthly Sales</span>
+                        </div>
+                        <div class="metric">
+                            <span class="metric-value" id="growthRate">0%</span>
+                            <span class="metric-label">Growth Rate</span>
+                        </div>
+                        <div class="metric">
+                            <span class="metric-value" id="topDrug">-</span>
+                            <span class="metric-label">Top Performing Drug</span>
+                        </div>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="performanceChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <div class="report-card">
+                <div class="report-header">
+                    <h3><i class="fas fa-map-marked-alt"></i> Regional Analysis</h3>
+                    <button class="export-btn"><i class="fas fa-download"></i> Export Excel</button>
+                </div>
+                <div class="report-content">
+                    <div class="region-stats">
+                        <div class="region-item" id="northRegion">
+                            <span class="region-name">North</span>
+                            <span class="region-value">$0</span>
+                            <div class="progress-bar"><div class="progress-fill" style="width: 0%"></div></div>
+                        </div>
+                        <div class="region-item" id="southRegion">
+                            <span class="region-name">South</span>
+                            <span class="region-value">$0</span>
+                            <div class="progress-bar"><div class="progress-fill" style="width: 0%"></div></div>
+                        </div>
+                        <div class="region-item" id="eastRegion">
+                            <span class="region-name">East</span>
+                            <span class="region-value">$0</span>
+                            <div class="progress-bar"><div class="progress-fill" style="width: 0%"></div></div>
+                        </div>
+                        <div class="region-item" id="westRegion">
+                            <span class="region-name">West</span>
+                            <span class="region-value">$0</span>
+                            <div class="progress-bar"><div class="progress-fill" style="width: 0%"></div></div>
+                        </div>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="regionalChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <div class="report-card">
+                <div class="report-header">
+                    <h3><i class="fas fa-calendar-alt"></i> Monthly Trends</h3>
+                    <button class="export-btn"><i class="fas fa-download"></i> Export CSV</button>
+                </div>
+                <div class="report-content">
+                    <div class="trend-stats">
+                        <div class="trend-item">
+                            <span class="trend-period">This Month</span>
+                            <span class="trend-value" id="currentMonth">$0</span>
+                            <span class="trend-change" id="monthChange">0%</span>
+                        </div>
+                        <div class="trend-item">
+                            <span class="trend-period">Last Month</span>
+                            <span class="trend-value" id="lastMonth">$0</span>
+                        </div>
+                        <div class="trend-item">
+                            <span class="trend-period">Peak Month</span>
+                            <span class="trend-value" id="peakMonth">$0</span>
+                            <span class="trend-peak" id="peakMonthName">-</span>
+                        </div>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="trendsChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <div class="report-card">
+                <div class="report-header">
+                    <h3><i class="fas fa-medkit"></i> Drug Performance</h3>
+                    <button class="export-btn"><i class="fas fa-download"></i> Export Report</button>
+                </div>
+                <div class="report-content">
+                    <div class="drug-ranking">
+                        <div class="drug-item" id="drug1">
+                            <span class="drug-rank">1</span>
+                            <span class="drug-name">-</span>
+                            <span class="drug-sales">$0</span>
+                        </div>
+                        <div class="drug-item" id="drug2">
+                            <span class="drug-rank">2</span>
+                            <span class="drug-name">-</span>
+                            <span class="drug-sales">$0</span>
+                        </div>
+                        <div class="drug-item" id="drug3">
+                            <span class="drug-rank">3</span>
+                            <span class="drug-name">-</span>
+                            <span class="drug-sales">$0</span>
+                        </div>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="drugPerformanceChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 PharmaAnalytics. All rights reserved.</p>
+    </footer>
+
+    <script src="/static/reports.js"></script>
+</body>
+</html>
